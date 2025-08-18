@@ -1,223 +1,1806 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Try YouTube</title>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_cbe16a98e10962d4f3bf79d90632e527 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
         
-        <link rel="stylesheet" href="styles/general.css">
-        <link rel="stylesheet" href="styles/header.css">
-        <link rel="stylesheet" href="styles/video.css">
-        <link rel="stylesheet" href="styles/sidebar.css">
-    </head>
-    <body style="padding-bottom: 500px;">     
-        <header class="header">
-            <div class="left-section">
-                <img class="hamburger-menu" src="icons/hamburger-menu.svg">
-                <img class="youtube-logo" src="icons/youtube-logo.svg">
-            </div>
-
-            <div class="middle-section">
-                <input class="search-bar" type="text" placeholder="Search">
-                <button class="search-button">
-                    <img class="search-icon" src="icons/search.svg">
-                    <div class="tooltip">Search</div>
-                </button>
-                <!-- Put position absoulute inside in position relative -->
-                <button class="voice-search-button">
-                    <img class="voice-search-icon" src="icons/voice-search-icon.svg">
-                    <div class="tooltip">Search with your voice</div>
-                </button>
-            </div>
-           
-            <div class="right-section">
-                <div class="upload-icon-container">
-                    <img class="upload-icon" src="icons/upload.svg">
-                    <div class="tooltip">Create</div>
-                </div>
-
-                <div class="youtube-apps-icon-container">
-                    <img class="youtube-apps-icon" src="icons/youtube-apps.svg">
-                    <div class="tooltip">YouTube apps</div>
-                </div>                
-                
-                <div class="notifications-icon-container">
-                    <img class="notifications-icon" src="icons/notifications.svg">
-                    <div class="notifications-count">3</div>
-                    <div class="tooltip">notifications</div>
-                </div>                
-                <img class="current-user-picture" src="channel-pictures/my-channel.jpeg">
-            </div>            
-        </header>   
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_cbe16a98e10962d4f3bf79d90632e527" ></div>
         
-        <nav class="sidebar">
-            <div class="sidebar-link">
-                <img src="icons/home.svg">
-                <div>Home</div>
-            </div>
-            <div class="sidebar-link">
-                <img src="icons/explore.svg">
-                <div>Explore</div>
-            </div>
-            <div class="sidebar-link">
-                <img src="icons/subscriptions.svg">
-                <div>Subscriptions</div>
-            </div>
-            <div class="sidebar-link">
-                <img src="icons/originals.svg">
-                <div>Originals</div>
-            </div>
-            <div class="sidebar-link">
-                <img src="icons/youtube-music.svg">
-                <div>YouTube Music</div>
-            </div>
-            <div class="sidebar-link">
-                <img src="icons/library.svg">
-                <div>Library</div>
-            </div>
-        </nav>
-       
-        <main>
-            <section class="video-grid">
-                <div class="video-preview">
-                    <div class="thumbnail-row">
-                        <img class="thumbnail" src="thumbnails/thumbnail-1.webp"> 
-                        <div class="video-time">14:20</div>           
-                    </div>
-                    <div>
-                        <div class="channel-picture">
-                            <img class="profile-picture" src="channel-pictures/channel-1.jpeg">
-                        </div>
-                        <div class="video-info">
-                            <p class="video-title">
-                                Talking Tech and AI with Google CEO Sundar Pichai!
-                            </p>
-                            <p class="video-author">
-                                Marques Brownlee
-                            </p>
-                            <p class="video-stats">
-                                3.4M views &#183; 6 months ago
-                            </p>
-                        </div>                
-                    </div>            
-                </div>
+</body>
+<script>
+    
+    
+            var map_cbe16a98e10962d4f3bf79d90632e527 = L.map(
+                "map_cbe16a98e10962d4f3bf79d90632e527",
+                {
+                    center: [42.7, 25.3],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
 
-                <div class="video-preview">
-                    <div class="thumbnail-row">
-                        <img class="thumbnail" src="thumbnails/thumbnail-2.webp">  
-                        <div class="video-time">8:22</div>           
-                    </div>
-                    <div>
-                        <div class="channel-picture">
-                            <img class="profile-picture" src="channel-pictures/channel-2.jpeg">
-                        </div>
-                        <div class="video-info">
-                            <p class="video-title">
-                                Try Not To Laugh Challenge #9
-                            </p>
-                            <p class="video-author">
-                                Markiplier
-                            </p>
-                            <p class="video-stats">              
-                                19M views &#183; 4 years ago  
-                            </p>
-                        </div>                
-                    </div>            
-                </div>
+                }
+            );
 
-                <div class="video-preview">
-                    <div class="thumbnail-row">
-                        <img class="thumbnail" src="thumbnails/thumbnail-3.webp"> 
-                        <div class="video-time">9:13</div>            
-                    </div>
-                    <div>
-                        <div class="channel-picture">
-                            <img class="profile-picture" src="channel-pictures/channel-3.jpeg">
-                        </div>
-                        <div class="video-info">
-                            <p class="video-title">
-                                Crazy Tik Toks Taken Moments Before DISASTER
-                            </p>
-                            <p class="video-author">
-                                SSSniperWolf
-                            </p>
-                            <p class="video-stats">
-                                12M views &#183; 1 year ago 
-                            </p>
-                        </div>                
-                    </div>            
-                </div>
+            
 
-                <div class="video-preview">
-                    <div class="thumbnail-row">
-                        <img class="thumbnail" src="thumbnails/thumbnail-4.webp"> 
-                        <div class="video-time">22:09</div>            
-                    </div>
-                    <div>
-                        <div class="channel-picture">
-                            <img class="profile-picture" src="channel-pictures/channel-4.jpeg">
-                        </div>
-                        <div class="video-info">
-                            <p class="video-title">                            
-                                The Simplest Math Problem No One Can Solve - Collatz Conjecture                  
-                            </p>
-                            <p class="video-author">
-                                Veritasium
-                            </p>
-                            <p class="video-stats">
-                                18M views &#183; 4 months ago
-                            </p>
-                        </div>                
-                    </div>            
-                </div>
+        
+    
+            var tile_layer_7055a5858be2ae3d3ceecd1754bcf013 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
 
-                <div class="video-preview">
-                    <div class="thumbnail-row">
-                        <img class="thumbnail" src="thumbnails/thumbnail-5.webp">
-                        <div class="video-time">11:17</div>             
-                    </div>
-                    <div>
-                        <div class="channel-picture">
-                            <img class="profile-picture" src="channel-pictures/channel-5.jpeg">
-                        </div>
-                        <div class="video-info">
-                            <p class="video-title">
-                                Kadane's Algorithm to Maximum Sum Subarray Problem
-                            </p>
-                            <p class="video-author">
-                                CS Dojo
-                            </p>
-                            <p class="video-stats">
-                                519K views &#183; 5 years ago
-                        </div>                
-                    </div>            
-                </div>
-
-                <div class="video-preview">
-                    <div class="thumbnail-row">
-                        <img class="thumbnail" src="thumbnails/thumbnail-6.webp">  
-                        <div class="video-time">19:59</div>           
-                    </div>
-                    <div>
-                        <div class="channel-picture">
-                            <img class="profile-picture" src="channel-pictures/channel-6.jpeg">
-                        </div>
-                        <div class="video-info">
-                            <p class="video-title">
-                                The SECRET to Super Human STRENGTH
-                            </p>
-                            <p class="video-author">
-                                ThenX
-                            </p>
-                            <p class="video-stats">
-                                20M views &#183; 3 year ago
-                            </p>
-                        </div>                
-                    </div>            
-                </div>
-            </section>
-        </main>
-    </body>
+            );
+        
+    
+            tile_layer_7055a5858be2ae3d3ceecd1754bcf013.addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var marker_8d4e4e18e08258425f0ba9a6875eb1c2 = L.marker(
+                [43.151, 24.1108],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_c436fba5eeeb0195bcbb760fe3fda7d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_8d4e4e18e08258425f0ba9a6875eb1c2.bindTooltip(
+                `<div>
+                     1. Проходна пещера („Очите на Бога“)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8d4e4e18e08258425f0ba9a6875eb1c2.setIcon(icon_c436fba5eeeb0195bcbb760fe3fda7d6);
+            
+    
+            var marker_527d748cf2f3ac9c9287649c84c5e42e = L.marker(
+                [43.6244, 22.6853],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_55891e6ae3f60339e4376985407b9aa8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_527d748cf2f3ac9c9287649c84c5e42e.bindTooltip(
+                `<div>
+                     2. Белоградчишки скали
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_527d748cf2f3ac9c9287649c84c5e42e.setIcon(icon_55891e6ae3f60339e4376985407b9aa8);
+            
+    
+            var marker_27e1679519b00fea2f42ec1b857e259f = L.marker(
+                [42.3117, 27.7775],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_b14f1e2ca43e8aad231c9df170d5b784 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_27e1679519b00fea2f42ec1b857e259f.bindTooltip(
+                `<div>
+                     3. Бегликташ – скалното светилище
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_27e1679519b00fea2f42ec1b857e259f.setIcon(icon_b14f1e2ca43e8aad231c9df170d5b784);
+            
+    
+            var marker_69115c65bc09b523a7eeb1f99b111db4 = L.marker(
+                [42.1595, 26.3726],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_9e622f11145a4680b549c64c3f1ac0cc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_69115c65bc09b523a7eeb1f99b111db4.bindTooltip(
+                `<div>
+                     4. Вкаменената гора, с. Равнината
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_69115c65bc09b523a7eeb1f99b111db4.setIcon(icon_9e622f11145a4680b549c64c3f1ac0cc);
+            
+    
+            var marker_ed97c8e2381d657d490617eb9ecbc6b1 = L.marker(
+                [41.6643, 25.3932],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_7e25dfce7a3a0d035eb6ddb15470a1d1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_ed97c8e2381d657d490617eb9ecbc6b1.bindTooltip(
+                `<div>
+                     5. Каменната сватба край Кърджали
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ed97c8e2381d657d490617eb9ecbc6b1.setIcon(icon_7e25dfce7a3a0d035eb6ddb15470a1d1);
+            
+    
+            var marker_9c41c325ddd9b472e0bc5c0d0ffedc7d = L.marker(
+                [41.6574, 25.4058],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_66b4a73fc6bb8c9f49f17da3c81cab90 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_9c41c325ddd9b472e0bc5c0d0ffedc7d.bindTooltip(
+                `<div>
+                     6. Каменните гъби до с. Бели пласт
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9c41c325ddd9b472e0bc5c0d0ffedc7d.setIcon(icon_66b4a73fc6bb8c9f49f17da3c81cab90);
+            
+    
+            var marker_747004843d10e606f861e5feed4b2fcb = L.marker(
+                [43.2257, 27.705],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_887e3da525a0fcbd18ec8d38f3f5900e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_747004843d10e606f861e5feed4b2fcb.bindTooltip(
+                `<div>
+                     7. Побитите камъни (Варненско плато)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_747004843d10e606f861e5feed4b2fcb.setIcon(icon_887e3da525a0fcbd18ec8d38f3f5900e);
+            
+    
+            var marker_5ac84d32fe496f7fe573131bcea65bd4 = L.marker(
+                [41.5233, 23.3934],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_97d15f2e2bcf3bab8d1acd79f1586f67 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_5ac84d32fe496f7fe573131bcea65bd4.bindTooltip(
+                `<div>
+                     8. Скалните пирамиди край Мелник
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5ac84d32fe496f7fe573131bcea65bd4.setIcon(icon_97d15f2e2bcf3bab8d1acd79f1586f67);
+            
+    
+            var marker_0845479ceb06e25478696f0f6feb1c1a = L.marker(
+                [41.5892, 24.3845],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_5275cef7d14c3db0f1306afbfb0ab947 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_0845479ceb06e25478696f0f6feb1c1a.bindTooltip(
+                `<div>
+                     9. Вълчата пещера край Триград
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0845479ceb06e25478696f0f6feb1c1a.setIcon(icon_5275cef7d14c3db0f1306afbfb0ab947);
+            
+    
+            var marker_e22fc1660c4516e6d2050a02e776d5b7 = L.marker(
+                [41.4986, 24.7139],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_48e23044da877d47024e520d12779d4b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_e22fc1660c4516e6d2050a02e776d5b7.bindTooltip(
+                `<div>
+                     10. Пещера Ухловица
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e22fc1660c4516e6d2050a02e776d5b7.setIcon(icon_48e23044da877d47024e520d12779d4b);
+            
+    
+            var marker_f9ba61707aec90a6c1529545fd64af1a = L.marker(
+                [41.6121, 24.3731],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_266f7c0fb392331456ef05ac9c837313 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_f9ba61707aec90a6c1529545fd64af1a.bindTooltip(
+                `<div>
+                     11. Орлово око – панорама от Родопите
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f9ba61707aec90a6c1529545fd64af1a.setIcon(icon_266f7c0fb392331456ef05ac9c837313);
+            
+    
+            var marker_2f8467ab103cff8d5f257f655c1daa59 = L.marker(
+                [43.4407, 28.5483],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_1b60a13f998bbc8bfc354ff76bc6a7d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_2f8467ab103cff8d5f257f655c1daa59.bindTooltip(
+                `<div>
+                     12. Скалната арка при Тюленово
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2f8467ab103cff8d5f257f655c1daa59.setIcon(icon_1b60a13f998bbc8bfc354ff76bc6a7d6);
+            
+    
+            var marker_8f13d4158ec66a5dfdccf0c37305d11d = L.marker(
+                [41.8696, 24.5582],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_d5b5e9bebdce34cc3aa75b6ea05d1fe9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_8f13d4158ec66a5dfdccf0c37305d11d.bindTooltip(
+                `<div>
+                     13. Чудните мостове
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8f13d4158ec66a5dfdccf0c37305d11d.setIcon(icon_d5b5e9bebdce34cc3aa75b6ea05d1fe9);
+            
+    
+            var marker_cc601029f21a3e05c5bc41d42557004d = L.marker(
+                [41.6077, 24.3758],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_87bef2d00544cd01ef49b8c76ad1c43c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_cc601029f21a3e05c5bc41d42557004d.bindTooltip(
+                `<div>
+                     14. Дяволското гърло – пещера
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cc601029f21a3e05c5bc41d42557004d.setIcon(icon_87bef2d00544cd01ef49b8c76ad1c43c);
+            
+    
+            var marker_025969551a9300f9be0304da9ac6c5fd = L.marker(
+                [42.8497, 22.6511],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_3d3ffd2b6440cdd122082e289c27fe99 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_025969551a9300f9be0304da9ac6c5fd.bindTooltip(
+                `<div>
+                     15. Ждрелото на река Ерма
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_025969551a9300f9be0304da9ac6c5fd.setIcon(icon_3d3ffd2b6440cdd122082e289c27fe99);
+            
+    
+            var marker_ce92318868116bfddf102228f4908f52 = L.marker(
+                [41.6101, 23.9841],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_2389c3eacbe6a5919773f65fa8cabed5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_ce92318868116bfddf102228f4908f52.bindTooltip(
+                `<div>
+                     16. С. Долен – архитектурен резерват
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ce92318868116bfddf102228f4908f52.setIcon(icon_2389c3eacbe6a5919773f65fa8cabed5);
+            
+    
+            var marker_36a0e27d2e2155983c0fda0fdc5a7174 = L.marker(
+                [41.6502, 23.9603],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_85734847b869e38f8ff769b220f9bce1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_36a0e27d2e2155983c0fda0fdc5a7174.bindTooltip(
+                `<div>
+                     17. С. Ковачевица – автентична родопска архитектура
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_36a0e27d2e2155983c0fda0fdc5a7174.setIcon(icon_85734847b869e38f8ff769b220f9bce1);
+            
+    
+            var marker_3260bbc40334b185204cab0732d3cce0 = L.marker(
+                [42.9481, 23.0323],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_5140c75cfcc181ac264d5b80849356d4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_3260bbc40334b185204cab0732d3cce0.bindTooltip(
+                `<div>
+                     18. С. Бракьовци – призрачно село в Стара планина
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3260bbc40334b185204cab0732d3cce0.setIcon(icon_5140c75cfcc181ac264d5b80849356d4);
+            
+    
+            var marker_31abce7c987c060c4d06e8fdb0781e7e = L.marker(
+                [41.6025, 25.0495],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_f534ca1deb14fc2f2518d87b1bffedbd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_31abce7c987c060c4d06e8fdb0781e7e.bindTooltip(
+                `<div>
+                     19. С. Дядовци – забравено, с 1 жител
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_31abce7c987c060c4d06e8fdb0781e7e.setIcon(icon_f534ca1deb14fc2f2518d87b1bffedbd);
+            
+    
+            var marker_75a8ea4adb5ad94a8934254a1c63f9f1 = L.marker(
+                [41.529, 24.465],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_a02195f22440ebfef699e8d56deb9b01 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_75a8ea4adb5ad94a8934254a1c63f9f1.bindTooltip(
+                `<div>
+                     20. С. Мугла – отдалечено село в Родопите
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_75a8ea4adb5ad94a8934254a1c63f9f1.setIcon(icon_a02195f22440ebfef699e8d56deb9b01);
+            
+    
+            var marker_081721428d96e309cf8c492d310fcb8a = L.marker(
+                [42.655, 24.742],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_bc05555d84e168f04cb09d91aaff35a6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_081721428d96e309cf8c492d310fcb8a.bindTooltip(
+                `<div>
+                     21. Екопътека „Бяла река“ край Калофер
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_081721428d96e309cf8c492d310fcb8a.setIcon(icon_bc05555d84e168f04cb09d91aaff35a6);
+            
+    
+            var marker_18e33e9305bb4d0713c647a3380faaf0 = L.marker(
+                [41.792, 24.522],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_e86856361d3b4b4b04af1d0a7de4a739 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_18e33e9305bb4d0713c647a3380faaf0.bindTooltip(
+                `<div>
+                     22. Дяволската пътека, Борино
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_18e33e9305bb4d0713c647a3380faaf0.setIcon(icon_e86856361d3b4b4b04af1d0a7de4a739);
+            
+    
+            var marker_516a4b080d306ccd01d7d5555901f471 = L.marker(
+                [43.1298, 25.5064],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_fac414a83cd151606cd73f257d5c81b6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_516a4b080d306ccd01d7d5555901f471.bindTooltip(
+                `<div>
+                     23. Екопътека „Хотнишки водопад“
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_516a4b080d306ccd01d7d5555901f471.setIcon(icon_fac414a83cd151606cd73f257d5c81b6);
+            
+    
+            var marker_ce6df243eb3da37213b9ce76ad42f9c7 = L.marker(
+                [43.4119, 28.3353],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_0159c1c399ea08a564f0456a4ccfca3d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_ce6df243eb3da37213b9ce76ad42f9c7.bindTooltip(
+                `<div>
+                     24. Пътека „Виа Понтика“ край Каварна
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ce6df243eb3da37213b9ce76ad42f9c7.setIcon(icon_0159c1c399ea08a564f0456a4ccfca3d);
+            
+    
+            var marker_ae0c47d442bc90e23365475a087e5093 = L.marker(
+                [42.6742, 23.303],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_599d75768e9e2ea13fad48565607edf6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_ae0c47d442bc90e23365475a087e5093.bindTooltip(
+                `<div>
+                     25. Екопътека Бистришко бранище
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ae0c47d442bc90e23365475a087e5093.setIcon(icon_599d75768e9e2ea13fad48565607edf6);
+            
+    
+            var marker_0175d7514f436f2b0c7b9bcf814ba349 = L.marker(
+                [41.5539, 24.7227],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_584338fffa2482eefcf60ee82f0803fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_0175d7514f436f2b0c7b9bcf814ba349.bindTooltip(
+                `<div>
+                     26. Крепост Асенова крепост
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0175d7514f436f2b0c7b9bcf814ba349.setIcon(icon_584338fffa2482eefcf60ee82f0803fc);
+            
+    
+            var marker_7684797c0cd1e74027c4431243355732 = L.marker(
+                [42.6075, 23.0203],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_38a55e95c93be06bb23af4349c97df91 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_7684797c0cd1e74027c4431243355732.bindTooltip(
+                `<div>
+                     27. Крепостта Кракра в Перник
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7684797c0cd1e74027c4431243355732.setIcon(icon_38a55e95c93be06bb23af4349c97df91);
+            
+    
+            var marker_7c681b2673f24aa61388bb4770b15d52 = L.marker(
+                [42.6348, 23.4379],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_6f70d646c36567e9937ace4da3f167e8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_7c681b2673f24aa61388bb4770b15d52.bindTooltip(
+                `<div>
+                     28. Состра – римски кастел до с. Ломец
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7c681b2673f24aa61388bb4770b15d52.setIcon(icon_6f70d646c36567e9937ace4da3f167e8);
+            
+    
+            var marker_46170330b935bb0a39e9d43db93a72d1 = L.marker(
+                [43.0281, 23.8412],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_af1002f8e3c87f01e5e14acbd323d6e4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_46170330b935bb0a39e9d43db93a72d1.bindTooltip(
+                `<div>
+                     29. Римският мост при Нисово
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_46170330b935bb0a39e9d43db93a72d1.setIcon(icon_af1002f8e3c87f01e5e14acbd323d6e4);
+            
+    
+            var marker_806801fc8f1ff98664363b3f91e36c14 = L.marker(
+                [41.6177, 25.2527],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_ac916ae17d3e9fdbd94aec3420a4c81e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_806801fc8f1ff98664363b3f91e36c14.bindTooltip(
+                `<div>
+                     30. Дяволският мост край Ардино
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_806801fc8f1ff98664363b3f91e36c14.setIcon(icon_ac916ae17d3e9fdbd94aec3420a4c81e);
+            
+    
+            var marker_f864432a35efb2243cb4a6cab2e349b9 = L.marker(
+                [41.4866, 25.4872],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_2f472970a3986ce5e2eaab9a7d61d2b6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_f864432a35efb2243cb4a6cab2e349b9.bindTooltip(
+                `<div>
+                     31. Тракийско светилище при Татул
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f864432a35efb2243cb4a6cab2e349b9.setIcon(icon_2f472970a3986ce5e2eaab9a7d61d2b6);
+            
+    
+            var marker_2be41c47cf5b33dd568c59462fc82105 = L.marker(
+                [41.8737, 24.9089],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_9c28960954cf8b65b32c889753c31823 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_2be41c47cf5b33dd568c59462fc82105.bindTooltip(
+                `<div>
+                     32. Белинташ – скално плато с мистично минало
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2be41c47cf5b33dd568c59462fc82105.setIcon(icon_9c28960954cf8b65b32c889753c31823);
+            
+    
+            var marker_fc0a8c9045d4684e50829d243dc20234 = L.marker(
+                [41.3844, 23.1761],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_8c979f2a1d7a2d2622b4294937ba0b4a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_fc0a8c9045d4684e50829d243dc20234.bindTooltip(
+                `<div>
+                     33. Хераклея Синтика (до Рупите)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fc0a8c9045d4684e50829d243dc20234.setIcon(icon_8c979f2a1d7a2d2622b4294937ba0b4a);
+            
+    
+            var marker_88a8dbb823c315bf6120a73adbaddb2d = L.marker(
+                [43.7016, 25.9754],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_61fe047a83788b5e9a301ea451fa2ce4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_88a8dbb823c315bf6120a73adbaddb2d.bindTooltip(
+                `<div>
+                     34. Скалните църкви край Иваново
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_88a8dbb823c315bf6120a73adbaddb2d.setIcon(icon_61fe047a83788b5e9a301ea451fa2ce4);
+            
+    
+            var marker_0c08fef62de866a7abf8436d0082e0e2 = L.marker(
+                [41.8601, 24.7652],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_96b8cb98e52ec7cbb9544bbe1517a276 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_0c08fef62de866a7abf8436d0082e0e2.bindTooltip(
+                `<div>
+                     35. Кръстова гора – свято място
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0c08fef62de866a7abf8436d0082e0e2.setIcon(icon_96b8cb98e52ec7cbb9544bbe1517a276);
+            
+    
+            var marker_d50920a1732b01db904a6fd96a675c01 = L.marker(
+                [41.4823, 23.3591],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_80a565e816894a1e5f7022f3638b0a6a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_d50920a1732b01db904a6fd96a675c01.bindTooltip(
+                `<div>
+                     36. Село Златолист и Преподобна Стойна
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d50920a1732b01db904a6fd96a675c01.setIcon(icon_80a565e816894a1e5f7022f3638b0a6a);
+            
+    
+            var marker_470cc28c6d25e46a67c2d7c7a565f9ff = L.marker(
+                [41.9836, 27.5134],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_b59e00598c076bc2f1d0ee73baa1584f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_470cc28c6d25e46a67c2d7c7a565f9ff.bindTooltip(
+                `<div>
+                     37. Храмът на богинята Бастет край Малко Търново
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_470cc28c6d25e46a67c2d7c7a565f9ff.setIcon(icon_b59e00598c076bc2f1d0ee73baa1584f);
+            
+    
+            var marker_408ccb501ab18724f370e2085da114c5 = L.marker(
+                [42.8316, 22.6512],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_b679c01dd60919a80731a23ad298279d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_408ccb501ab18724f370e2085da114c5.bindTooltip(
+                `<div>
+                     38. Параклисът в пещерата край Трън
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_408ccb501ab18724f370e2085da114c5.setIcon(icon_b679c01dd60919a80731a23ad298279d);
+            
+    
+            var marker_0139358b89c0573b6a515cd1fcd75ebd = L.marker(
+                [41.485, 25.486],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_256367f1d855b3d9525c6d820071357b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_0139358b89c0573b6a515cd1fcd75ebd.bindTooltip(
+                `<div>
+                     39. Гробът на Орфей край с. Татул
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0139358b89c0573b6a515cd1fcd75ebd.setIcon(icon_256367f1d855b3d9525c6d820071357b);
+            
+    
+            var marker_02d98d977d1440080368f4e874de1302 = L.marker(
+                [41.8749, 24.9086],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_062bc13f40721916b07ad616dc263c1b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_02d98d977d1440080368f4e874de1302.bindTooltip(
+                `<div>
+                     40. Скалната глава край Белинташ
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_02d98d977d1440080368f4e874de1302.setIcon(icon_062bc13f40721916b07ad616dc263c1b);
+            
+    
+            var marker_ae6c3a1da86e4c857f335f643edb25ae = L.marker(
+                [42.3941, 23.0012],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_8aae883afadc5b5e21b5c05aa7c3d34e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_ae6c3a1da86e4c857f335f643edb25ae.bindTooltip(
+                `<div>
+                     41. Олтарът на Слънцето – Мегалит при Пчелина
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ae6c3a1da86e4c857f335f643edb25ae.setIcon(icon_8aae883afadc5b5e21b5c05aa7c3d34e);
+            
+    
+            var marker_983ae8bc853e40d4ce5e836234b919c0 = L.marker(
+                [43.3444, 23.6669],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_a82a3795048bbd73661b698a3ab184b9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_983ae8bc853e40d4ce5e836234b919c0.bindTooltip(
+                `<div>
+                     42. Скалните гробници край с. Лиляче
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_983ae8bc853e40d4ce5e836234b919c0.setIcon(icon_a82a3795048bbd73661b698a3ab184b9);
+            
+    
+            var marker_d36cd250ace10e9d3ea9efb7664d7b20 = L.marker(
+                [43.1486, 23.7116],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_761941d7f188acfe11a3be3b15b50bb6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_d36cd250ace10e9d3ea9efb7664d7b20.bindTooltip(
+                `<div>
+                     43. Калето край Мездра
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d36cd250ace10e9d3ea9efb7664d7b20.setIcon(icon_761941d7f188acfe11a3be3b15b50bb6);
+            
+    
+            var marker_a6cd681aafc69c43e747e8ab690bbdb2 = L.marker(
+                [43.0421, 27.8319],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_68c22770cd419c2a2e1bcd7a14686dd4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_a6cd681aafc69c43e747e8ab690bbdb2.bindTooltip(
+                `<div>
+                     44. Селото Голеш – мистериозни подземия
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a6cd681aafc69c43e747e8ab690bbdb2.setIcon(icon_68c22770cd419c2a2e1bcd7a14686dd4);
+            
+    
+            var marker_3d3a1ae42af55503491ab0e8c162ba70 = L.marker(
+                [41.5195, 23.1811],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_6daf63662e59e579d5532fdc6b27c9ad = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_3d3a1ae42af55503491ab0e8c162ba70.bindTooltip(
+                `<div>
+                     45. „Цареви кукли“ – скали при Струмяни
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3d3a1ae42af55503491ab0e8c162ba70.setIcon(icon_6daf63662e59e579d5532fdc6b27c9ad);
+            
+    
+            var marker_8fce6ac79698b57db4c2301a2bc005d1 = L.marker(
+                [43.2441, 25.0372],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_d5764efb321b49d1655869566df171d2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_8fce6ac79698b57db4c2301a2bc005d1.bindTooltip(
+                `<div>
+                     46. Крушунските водопади
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8fce6ac79698b57db4c2301a2bc005d1.setIcon(icon_d5764efb321b49d1655869566df171d2);
+            
+    
+            var marker_6f6f251a6e80de05d821e040c69a8a02 = L.marker(
+                [43.0597, 23.3892],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_825577613d7b9d4c6fbdd08a205a7bd9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_6f6f251a6e80de05d821e040c69a8a02.bindTooltip(
+                `<div>
+                     47. Водопад Скакля (Бов)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6f6f251a6e80de05d821e040c69a8a02.setIcon(icon_825577613d7b9d4c6fbdd08a205a7bd9);
+            
+    
+            var marker_969eab9e965acafd4d86bdc98629ec99 = L.marker(
+                [42.3806, 22.6856],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_59fc5004b6297c7260e157b38ebf454b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_969eab9e965acafd4d86bdc98629ec99.bindTooltip(
+                `<div>
+                     48. Водопад Полска Скакавица
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_969eab9e965acafd4d86bdc98629ec99.setIcon(icon_59fc5004b6297c7260e157b38ebf454b);
+            
+    
+            var marker_e22f0787890f9783f2e9b5d1e1da695d = L.marker(
+                [42.7046, 24.9216],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_510d5c4e1d4ebb1eedf8083033df8631 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_e22f0787890f9783f2e9b5d1e1da695d.bindTooltip(
+                `<div>
+                     49. Райското пръскало – най-високият в България
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e22f0787890f9783f2e9b5d1e1da695d.setIcon(icon_510d5c4e1d4ebb1eedf8083033df8631);
+            
+    
+            var marker_1f2599165dfe951a32a4033751028381 = L.marker(
+                [41.75, 25.8],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_0702d6a6266ff163e136ff223f200b62 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_1f2599165dfe951a32a4033751028381.bindTooltip(
+                `<div>
+                     50. Сини вир (Меден кладенец)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1f2599165dfe951a32a4033751028381.setIcon(icon_0702d6a6266ff163e136ff223f200b62);
+            
+    
+            var marker_0d6189e147373f15e17245bfd632bf93 = L.marker(
+                [41.6063, 24.3759],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_edac43d0299f48f89f6075422a15e371 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_0d6189e147373f15e17245bfd632bf93.bindTooltip(
+                `<div>
+                     51. Ягодинската пещера
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0d6189e147373f15e17245bfd632bf93.setIcon(icon_edac43d0299f48f89f6075422a15e371);
+            
+    
+            var marker_44119178430ea28e7d3eb359b13d6cd9 = L.marker(
+                [42.1791, 23.3056],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_2dd2099d3a15e84ad1cf10f46ca0d404 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_44119178430ea28e7d3eb359b13d6cd9.bindTooltip(
+                `<div>
+                     52. Седемте рилски езера (но минавай извън сезона)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_44119178430ea28e7d3eb359b13d6cd9.setIcon(icon_2dd2099d3a15e84ad1cf10f46ca0d404);
+            
+    
+            var marker_8b1b09dc5451715c984eb1657ae9c7d6 = L.marker(
+                [42.85, 23.2],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_8cda9dca7e43ecc957574b3f89afd9a4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_8b1b09dc5451715c984eb1657ae9c7d6.bindTooltip(
+                `<div>
+                     53. Понор планина – най-забравеното карстово чудо
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8b1b09dc5451715c984eb1657ae9c7d6.setIcon(icon_8cda9dca7e43ecc957574b3f89afd9a4);
+            
+    
+            var marker_7fb6da192e107c0c37b2ffb0cf5c90f0 = L.marker(
+                [43.2111, 23.5478],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_ae89338426520dfa33db021129c8c531 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_7fb6da192e107c0c37b2ffb0cf5c90f0.bindTooltip(
+                `<div>
+                     54. Скалните кули край Враца
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7fb6da192e107c0c37b2ffb0cf5c90f0.setIcon(icon_ae89338426520dfa33db021129c8c531);
+            
+    
+            var marker_5a2ae106d3bb7ea97a71b7e120680f7c = L.marker(
+                [41.5657, 23.2815],
+                {
+}
+            ).addTo(map_cbe16a98e10962d4f3bf79d90632e527);
+        
+    
+            var icon_106c743f8ded8ee51e74626f75e85063 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_5a2ae106d3bb7ea97a71b7e120680f7c.bindTooltip(
+                `<div>
+                     55. Рибарникът на Сандански (тайно езеро)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5a2ae106d3bb7ea97a71b7e120680f7c.setIcon(icon_106c743f8ded8ee51e74626f75e85063);
+            
+</script>
 </html>
